@@ -1,0 +1,38 @@
+GETTING POSITION DATA
+
+step 1: use NOP_viewer.getSelection() with a room selected to get a room dbID
+step 2: use NOP_VIEWER.model.getData().instanceTree.getNodeParentId(dbID) to get dbID of root room node
+step 3: use getPositionalJSONString(roomNodeId) to get json string with all positional data
+
+function getModifiedWorldBoundingBox (dbId, instanceTree) {  
+	var fragList = NOP_VIEWER.model.getFragmentList();  
+	var frags = [];  
+	instanceTree.enumNodeFragments(dbId, fragId=>frags.push(fragId));  
+	const nodebBox = new THREE.Box3();  
+	// for each fragId on the list, get the bounding box 
+ 	for (const fragId of frags) {      
+		const fragbBox = new THREE.Box3();      
+		fragList.getWorldBounds(fragId, fragbBox);      
+		nodebBox.union(fragbBox); // create a unifed bounding box  
+	}  
+	return nodebBox.center()
+}
+
+
+
+
+function getPositionalJSONString(roomNodeId){
+	testjson = {};
+	it = NOP_VIEWER.model.getData().instanceTree;
+	it.enumNodeChildren(roomNodeId,(childID)=>{
+		var name = it.getNodeName(childID); 
+		var position = getModifiedWorldBoundingBox (childID, it); 
+		testjson[name] = position
+	})
+	return JSON.stringify(testjson);
+}
+	
+
+
+
+

@@ -3,7 +3,7 @@
 These scripts and files are designed to help pull data from Coopertree Analytics Kaizen service and format it into data that can be read by Autodesk Forges' Hyperion Reference App
 
 ## List of files
-**Script files**
+**Script files in forge_kaizen_scripts**
 
 - **HSB.xlsx** and **CB.xlsx** These files are used to define the relation between building sensor properties and their trendlog address
 - **CBdata.json** and **HSBdata.json**: These files contain a dictionary of different sensor properties and list which rooms have data regarding that property
@@ -13,8 +13,8 @@ These scripts and files are designed to help pull data from Coopertree Analytics
 - **control_variables.py** file has paths to the users
 
 - **TL_Listing.py** in progress work on downloading list of trendlogs from Kaizen
-- **MassAdd.py**  script that allows you to create device-models and devices in the respsective jsons
-- **Sort.py**  Sorts through HSB.xlsxl and CB.xlsx to generate the sorted lists in CBdata.json and HSBdata.json
+- **MassAdd py**  script that allows you to create device-models and devices in the respsective jsons
+- **Sort py**  Sorts through HSB.xlsxl and CB.xlsx to generate the sorted lists in CBdata.json and HSBdata.json
 
 **Notes Files**
 - **presentationSlides.pptx** Slides outlining basic operation of the HRA using CSV adapter and out the updating csv files work
@@ -34,7 +34,7 @@ To install download folder into the same directory as the reference app, if refe
 **Operating steps**
 1. Make sure that the data.json and xlsx files are up todate regarding sensor data
    1. If files are not up to date, first update the xlsx file with the data from Kaizen
-   2. Then update the data.json by running Sort.py
+   2. Then update the data.json by running Sort py
 2. If model has been changed or updated, make sure to update json string with the new positional data
 3. Navigate into the top git folder
 4. run MassAdd.py, you should receive a prompt asking for a device property
